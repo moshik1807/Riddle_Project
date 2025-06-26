@@ -10,10 +10,10 @@ export default function Player(name){
         this.times.push(end - this.start)
     }
     this.printTimes = function(){
-        let xx = 0
+        let sumTime = 0
         for(const time of this.times){
-            xx += time
+            sumTime += time
         }
-        console.log(`total time:${xx},average time:${xx/this.times.length}`)
+        console.log(`total time:${sumTime/1000},average time:${sumTime/1000/this.times.length}`)
     }
 }
