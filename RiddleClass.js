@@ -6,10 +6,11 @@ export default function Riddel({id,name,taskDescription,correctAnswer}){
     this.taskDescription = taskDescription
     this.correctAnswer = correctAnswer
     this.ask = function (){
-        let x = prompt(`${this.name}:${this.taskDescription}`)
-        while(x !== this.correctAnswer){
-                 x = prompt(`${this.name}:${this.taskDescription}`)
+        let result = prompt(`${this.name}:${this.taskDescription}`)
+        while(result !== this.correctAnswer){
+                 result = prompt(`${this.name}:${this.taskDescription}`)
             
         }
     }
 }
+
