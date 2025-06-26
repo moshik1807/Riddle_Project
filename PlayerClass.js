@@ -14,6 +14,6 @@ export default function Player(name){
         for(const time of this.times){
             xx += time
         }
-        console.log(`total time:${xx},average time:${xx/this.times.length}`)
+        console.log(`total time:${xx/1000},average time:${xx/1000/this.times.length}`)
     }
 }
