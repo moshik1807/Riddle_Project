@@ -1,6 +1,6 @@
 export default {
     id:1,
     name:"riddel:1",
-    taskDescription:"What is 5 + 3?",
+    taskDescription:"What is 5 + 3?  ",
     correctAnswer:"8"
 }
