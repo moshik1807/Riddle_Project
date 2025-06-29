@@ -18,9 +18,9 @@ function riddleByLevel(readyRiddle){
 
 function Game(arrayRiddle,player){
     for (const ridd of arrayRiddle){
-        player.startTime()
+        ridd.startTime()
         ridd.ask()
-        player.endTimer(ridd.timer)
+        ridd.endTimer(player)
     }
     player.printTimes()
 }
