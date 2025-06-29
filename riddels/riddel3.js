@@ -1,5 +1,6 @@
 export default {
-    id:1,
+    id:3,
+    level:"easy",
     name:"riddel:3",
     taskDescription:"What is 75 / 3?  ",
     correctAnswer:"25"
