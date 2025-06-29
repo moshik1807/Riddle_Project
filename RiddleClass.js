@@ -1,7 +1,8 @@
 import promptSync from 'prompt-sync';
 const prompt = promptSync();
-export default function Riddel({id,name,taskDescription,correctAnswer}){
+export default function Riddel({id,level,name,taskDescription,correctAnswer}){
     this.id = id
+    this.level = level
     this.name = name
     this.taskDescription = taskDescription
     this.correctAnswer = correctAnswer
