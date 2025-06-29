@@ -20,7 +20,7 @@ function Game(arrayRiddle,player){
     for (const ridd of arrayRiddle){
         ridd.startTime()
         ridd.ask()
-        ridd.endTimer(player)
+        ridd.endTime(player)
     }
     player.printTimes()
 }

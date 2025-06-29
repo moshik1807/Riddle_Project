@@ -3,23 +3,30 @@ const input = promptSync();
 export default function Riddel(riddle){
     Object.assign(this,riddle)
     this.start = 0
+    this.GetHint = false
+    this.addTime = 0
     this.startTime = function(){
         this.start = new Date()
     }
-    this.endTimer = function(player){
+    this.endTime = function(player){
         let end = new Date()
         if (this.timer < end - this.start){
             console.log('Too slow! 5 seconds penalty applied.')
-            player.times.push(end - this.start + 5000)
+            this.addTime += 5000
         }
-        else{
-            player.times.push(end - this.start)
+        if (this.GetHint){
+            this.addTime += 5000
         }
+        player.times.push(end - this.start + this.addTime)
     }
     this.ask = function (){
-        let result = input(`${this.name}:${this.taskDescription}`)
+        let result = input(`${this.name}:${this.taskDescription},To get a hint, type a hint. `)
         while(result !== this.correctAnswer){
-                 result = input(`${this.name}:${this.taskDescription}`)
+                if(result == "hint"){
+                    this.GetHint = true
+                    console.log(this.hint)
+                }
+                result = input(`${this.name}:${this.taskDescription},To get a hint, type a hint. `)
             
         }
     }
