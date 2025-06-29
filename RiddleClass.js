@@ -1,5 +1,5 @@
 import promptSync from 'prompt-sync';
-const prompt = promptSync();
+const input = promptSync();
 export default function Riddel({id,level,name,taskDescription,correctAnswer,timer}){
     this.id = id
     this.level = level
@@ -8,9 +8,9 @@ export default function Riddel({id,level,name,taskDescription,correctAnswer,time
     this.correctAnswer = correctAnswer
     this.timer = timer
     this.ask = function (){
-        let result = prompt(`${this.name}:${this.taskDescription}`)
+        let result = input(`${this.name}:${this.taskDescription}`)
         while(result !== this.correctAnswer){
-                 result = prompt(`${this.name}:${this.taskDescription}`)
+                 result = input(`${this.name}:${this.taskDescription}`)
             
         }
     }

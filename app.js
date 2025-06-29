@@ -1,5 +1,5 @@
 import promptSync from 'prompt-sync';
-const prompt = promptSync();
+const input = promptSync();
 import * as importFile from './imports.js'
 
 
@@ -10,7 +10,7 @@ function creatRiddleObj(arrayRiddle){
 
 
 function riddleByLevel(readyRiddle){
-    const level = prompt("enter vevel:easy,medium,or hard  ")
+    const level = input("enter vevel:easy,medium,or hard  ")
     const arrayRiddle = readyRiddle.filter((riddle)=> riddle.level == level)
     return arrayRiddle
 }
@@ -28,6 +28,6 @@ function Game(arrayRiddle,player){
 
 const readyRiddle = creatRiddleObj(importFile.ridd)
 const RiddleByLevel = riddleByLevel(readyRiddle)
-const PlayerName = prompt('enter your name: ')
+const PlayerName = input('enter your name: ')
 const player = new importFile.Player(PlayerName)
 Game(RiddleByLevel,player)
