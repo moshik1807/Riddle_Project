@@ -3,5 +3,6 @@ export default {
     level:"easy",
     name:"riddel:2",
     taskDescription:"What is 10 * 10?  ",
-    correctAnswer:"100"
+    correctAnswer:"100",
+    timer:"10000"
 }
