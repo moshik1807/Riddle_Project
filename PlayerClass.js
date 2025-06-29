@@ -5,9 +5,15 @@ export default function Player(name){
     this.startTime = function(){
         this.start = new Date()
     }
-    this.endTimer = function(){
+    this.endTimer = function(riddleTimer){
         let end = new Date()
-        this.times.push(end - this.start)
+        if (riddleTimer<end - this.start){
+            console.log('Too slow! 5 seconds penalty applied.')
+            this.times.push(end - this.start+5000)
+        }
+        else{
+            this.times.push(end - this.start)
+        }
     }
     this.printTimes = function(){
         let sumTime = 0
