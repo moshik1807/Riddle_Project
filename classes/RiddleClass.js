@@ -1,14 +1,16 @@
 import promptSync from 'prompt-sync';
 const input = promptSync();
-export default function Riddel(riddle){
+export default class Riddel{
+    constructor(riddle){
     Object.assign(this,riddle)
     this.start = 0
     this.GetHint = false
     this.addTime = 0
-    this.startTime = function(){
+    }
+    startTime(){
         this.start = new Date()
     }
-    this.endTime = function(player){
+    endTime(player){
         let end = new Date()
         if (this.timer < end - this.start){
             console.log('Too slow! 5 seconds penalty applied.')
@@ -19,7 +21,7 @@ export default function Riddel(riddle){
         }
         player.times.push(end - this.start + this.addTime)
     }
-    this.ask = function (){
+    ask(){
         let result = input(`${this.name}:${this.taskDescription},To get a hint, type a hint. `)
         while(result !== this.correctAnswer){
                 if(result == "hint"){
