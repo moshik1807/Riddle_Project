@@ -11,5 +11,7 @@ import Player from './PlayerClass.js'
 import Riddel from './RiddleClass.js'
 import readText from './riddels/riddleServic.js'
 export {readText}
+import Player from './classes/PlayerClass.js'
+import Riddel from './classes/RiddleClass.js'
 export {Riddel}
 export {Player}
