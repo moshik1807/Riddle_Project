@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises'
 const path = '../texts/riddles.txt'
-import * as x from '../texts/riddleServic.js'
+import * as x from '../texts/filesService.js'
 import promptSync from 'prompt-sync'
 const prompt = promptSync()
 
