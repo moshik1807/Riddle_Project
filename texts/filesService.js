@@ -6,6 +6,7 @@ export async function readText(path){
     try{
         const file = await readFile(path,'utf8')
         const fileJson = JSON.parse(file)
+        // console.log(fileJson)
         return fileJson
     }
     catch(err){
@@ -20,7 +21,7 @@ export async function creat(path,obj){
         const file = await readFile(path,'utf8')
         const fileJson = JSON.parse(file)
         fileJson.push(obj)
-        await writeFile("riddles.txt", JSON.stringify(fileJson,null,2))
+        await writeFile(path, JSON.stringify(fileJson,null,2))
     }
     catch(err){
         console.log(err)
