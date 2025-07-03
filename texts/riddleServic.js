@@ -3,8 +3,6 @@ import { resolve } from "node:path"
 const path = resolve('./', 'riddels/riddles.txt')
 import readline from 'node:readline';
 
-
-
 export async function readText(){
     try{
         const file = await readFile(path,'utf8')
@@ -30,4 +28,4 @@ export async function creatRiddle(path,obj){
     }
 }
 
-
+creatRiddle('./riddles.txt',{id:444,name:"bbbbb"})
