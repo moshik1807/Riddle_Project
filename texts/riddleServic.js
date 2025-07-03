@@ -1,6 +1,6 @@
 import {readFile,writeFile} from "node:fs/promises"
 import { resolve } from "node:path"
-const path = resolve('./', 'riddels/riddles.txt')
+const path = resolve('./', 'texts/riddles.txt')
 import readline from 'node:readline';
 
 export async function readText(){

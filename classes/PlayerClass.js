@@ -1,7 +1,9 @@
-export default function Player(name){
+export default class Player{
+    constructor(name){
     this.name = name
     this.times = []
-    this.printTimes = function(){
+    }
+    printTimes(){
         let sumTime = 0
         for(const time of this.times){
             sumTime += time
