@@ -1,35 +1,42 @@
+import { readFile, writeFile } from 'node:fs/promises'
 const path = '../texts/riddles.txt'
 import * as x from '../texts/riddleServic.js'
-import promptSync from 'prompt-sync';
-const readline = promptSync();
+import promptSync from 'prompt-sync'
+const prompt = promptSync()
 
-const r = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-console.log("for read all reddles pres 1")
-console.log("for creat riddle pres 2")
-
-
- r.question("enter new object ", (answer) => {
-    let newObj;
-    newObj = JSON.parse(answer)
-    r.close();
- })
-
-
-function read(){
-   x.readText(path)
+async function readAllRiddles(path){
+   const riddles = await x.readText(path)
+   console.log(riddles)
 }
 
-function addRiddle(){
-    newRiddle = {}
-    newRiddle[level] = readline("enter level")
-    newRiddle[name] = readline("enter name")
-    newRiddle[taskDescription] = readline("enter taskDescription")
-    newRiddle[correctAnswer] = readline("enter correctAnswer")
-    newRiddle[timer] = readline("enter timer")
-    newRiddle[hint] = readline("enter hint")
+function addRiddle(path){
+    const newRiddle = {}
+    newRiddle["level"] = prompt("enter level")
+    newRiddle["name"] = prompt("enter name")
+    newRiddle["taskDescription"] = prompt("enter taskDescription")
+    newRiddle["correctAnswer"] = prompt("enter correctAnswer")
+    newRiddle["timer"] = prompt("enter timer")
+    newRiddle["hint"] = prompt("enter hint")
     x.creat(path,newRiddle)
+}
+
+async function updeatRid(path){
+    const objById = prompt("enter id riddle you whant to change")
+    let y = await x.readText(path)
+    for (let element of y){
+        if(element.id == objById){
+            const newTaskDescription =  prompt("enter taskDescription updeat")
+            const newCorrectAnswer = prompt("enter correctAnswer updeat")
+            const newHint = prompt("enter hint updeat")
+            element.taskDescription = newTaskDescription
+            element.correctAnswer = newCorrectAnswer
+            element.hint = newHint
+        }
+    }
+    await writeFile(path, JSON.stringify(y,null,2))
+}
+
+function deletRiddle(path){
+    const objById = prompt("enter id object to you whant delet")
+    x.delet(path,objById)
 }
