@@ -3,8 +3,10 @@ const input = promptSync();
 import * as importFile from './imports.js'
 
 
-function creatRiddleObj(arrayRiddle){
-    const bewArrayRiddle = arrayRiddle.map(r => new importFile.Riddel(r))
+async function creatRiddleObj(){
+    const x = await importFile.readText()
+    console.log(x)
+    const bewArrayRiddle = x.map(r => new importFile.Riddel(r))
     return bewArrayRiddle
 }
 
@@ -17,6 +19,7 @@ function riddleByLevel(readyRiddle){
 
 
 function Game(arrayRiddle,player){
+    console.log(arrayRiddle)
     for (const ridd of arrayRiddle){
         ridd.startTime()
         ridd.ask()
@@ -26,8 +29,8 @@ function Game(arrayRiddle,player){
 }
 
 
-const readyRiddle = creatRiddleObj(importFile.ridd)
-const RiddleByLevel = riddleByLevel(readyRiddle)
+const readyRiddle = await creatRiddleObj()
+const RiddleByLevel =  riddleByLevel(readyRiddle)
 const PlayerName = input('enter your name: ')
 const player = new importFile.Player(PlayerName)
 Game(RiddleByLevel,player)

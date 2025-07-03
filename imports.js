@@ -7,8 +7,11 @@ import r6 from './riddels/riddel6.js'
 import r7 from './riddels/riddel7.js'
 import r8 from './riddels/riddel8.js'
 import r9 from './riddels/riddel9.js'
+import Player from './PlayerClass.js'
+import Riddel from './RiddleClass.js'
+import readText from './riddels/riddleServic.js'
+export {readText}
 import Player from './classes/PlayerClass.js'
 import Riddel from './classes/RiddleClass.js'
-export const ridd = [r1,r2,r3,r4,r5,r6,r7,r8,r9]
 export {Riddel}
 export {Player}
