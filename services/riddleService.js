@@ -4,12 +4,12 @@ import * as x from '../texts/filesService.js'
 import promptSync from 'prompt-sync'
 const prompt = promptSync()
 
-async function readAllRiddles(path){
+export async function readAllRiddles(path){
    const riddles = await x.readText(path)
    console.log(riddles)
 }
 
-function addRiddle(path){
+export function addRiddle(path){
     const newRiddle = {}
     newRiddle["level"] = prompt("enter level")
     newRiddle["name"] = prompt("enter name")
@@ -20,7 +20,7 @@ function addRiddle(path){
     x.creat(path,newRiddle)
 }
 
-async function updeatRid(path){
+export async function updeatRid(path){
     const objById = prompt("enter id riddle you whant to change")
     let y = await x.readText(path)
     for (let element of y){
@@ -36,7 +36,7 @@ async function updeatRid(path){
     await writeFile(path, JSON.stringify(y,null,2))
 }
 
-function deletRiddle(path){
+export function deletRiddle(path){
     const objById = prompt("enter id object to you whant delet")
     x.delet(path,objById)
 }
