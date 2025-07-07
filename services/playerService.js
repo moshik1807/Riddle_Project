@@ -1,14 +1,15 @@
 import { readFile, writeFile } from 'node:fs/promises'
 const path = '../texts/player.txt'
-import * as x from '../texts/filesService.js'
+import * as x from './helperService.js'
 
-
+//מדפיס את כל השחקנים
 export async function readAllPlayers(path){
    const riddles = await x.readText(path)
    console.log(riddles)
 }
 
 
+//בודק אם השחקן נמצא ברשימה ומחזיר ערך בוליאני
 export async function cheakIfPlayerInText(path,player){
     const file = await readFile(path,"utf8")
     const players = JSON.parse(file)
@@ -21,6 +22,7 @@ export async function cheakIfPlayerInText(path,player){
 }
 
 
+//"אם השחקן עקף את הזמן שלו אז מוחק אותו מרשימת השחקנים ומחזיר "אמת
 export async function addPlayer(path,player){   
      try{
         const delet = false
@@ -41,6 +43,7 @@ export async function addPlayer(path,player){
 }
 
 
+//דוחף שחקן למיקום מתאים ברשימת השחקנים לפי הזמן הממוצע שלו
 export async function pushPlayer(player){
     const players = await readFile(path,'utf8')
     const playersJson = JSON.parse(players)
@@ -59,6 +62,7 @@ export async function pushPlayer(player){
 }
 
 
+//מנהל את תהליך הוספת\עריכת שחקן
 export async function playerMeneger(path,player){
     const x = await addPlayer(path,player)
     if(!x){
