@@ -2,10 +2,12 @@ import { readFile, writeFile } from 'node:fs/promises'
 const path = '../texts/player.txt'
 import * as x from '../texts/filesService.js'
 
+
 export async function readAllPlayers(path){
    const riddles = await x.readText(path)
    console.log(riddles)
 }
+
 
 export async function cheakIfPlayerInText(path,player){
     const file = await readFile(path,"utf8")
@@ -18,25 +20,31 @@ export async function cheakIfPlayerInText(path,player){
     return { exists: false }
 }
 
+
 export async function addPlayer(path,player){   
      try{
+        const delet = false
         const players = await readFile(path,'utf8')
         const playersJson = JSON.parse(players)
         const cheak = await cheakIfPlayerInText(path,player)
         if(cheak.exists){
-            for(let p of playersJson){
-                if(p.name == player.name){
-                    if(player.everegTime < p.everegTime){
-                        playersJson.splice(cheak.index, 1)
-                    }
-                     else
-                    {
-                        return
-                    }
-                }
+            if(player.everegTime < playersJson[cheak.index].everegTime){
+                playersJson.splice(cheak.index, 1)
+                delet = true
             }
         }
-        let add = false
+        return delet
+        }
+        catch(err){
+        console.log(err)
+    }
+}
+
+
+export async function pushPlayer(player){
+    const players = await readFile(path,'utf8')
+    const playersJson = JSON.parse(players)
+    let add = false
         for (let i = 0; i < playersJson.length; i++) {
             if (player.everegTime < playersJson[i].everegTime) {
                 playersJson.splice(i, 0, player)
@@ -48,21 +56,16 @@ export async function addPlayer(path,player){
             playersJson.push(player)
         }
         await writeFile(path, JSON.stringify(playersJson,null,2))
-    }
-    catch(err){
-        console.log(err)
-    }
 }
 
- addPlayer(path,{"name":"moshe","everegTime":"001"})
+
+export async function playerMeneger(path,player){
+    const x = await addPlayer(path,player)
+    if(!x){
+       pushPlayer(player) 
+    }
+}
+   
 
 
-// async function createPlayer(path,player){
-//     const allPlayers = await readFile(path)
-//     jsonPlayers = JSON.parse(allPlayers)
-//     if(allPlayers[player]){
-//         if(player.everegTime < allPlayers[player].everegTime){
-//             allPlayers[player].everegTime = player.everegTime
-//         }
-//     }
-// }
+
